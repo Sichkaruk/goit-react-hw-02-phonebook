@@ -5,11 +5,11 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "./components/constants/theme";
 import App from "./App";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
+ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <App />
     </ThemeProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
