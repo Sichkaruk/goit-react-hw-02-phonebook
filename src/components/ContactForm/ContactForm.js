@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { nanoid } from "nanoid";
+import { FaRegUserCircle } from "react-icons/fa";
+
+import { BsTelephone } from "react-icons/bs";
 
 const INITIAL_VALUE = {
   name: "",
@@ -39,7 +42,7 @@ class ContactForm extends Component {
       <>
         <form onSubmit={handleSubmit}>
           <label>
-            Name
+            <FaRegUserCircle />
             <input
               type="text"
               name="name"
@@ -53,7 +56,7 @@ class ContactForm extends Component {
           </label>
           <br />
           <label>
-            Number
+            <BsTelephone />
             <input
               type="tel"
               name="number"

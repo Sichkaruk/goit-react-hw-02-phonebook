@@ -10,6 +10,10 @@ class App extends Component {
     filter: "",
   };
 
+  onFilter = (w) => {
+    this.setState(() => ({ filter: w.toLowerCase() }));
+  };
+
   onChangeState = (newContacts) => {
     this.setState(() => ({
       contacts: newContacts,
@@ -18,8 +22,9 @@ class App extends Component {
 
   render() {
     const {
-      state: { contacts },
+      state: { contacts, filter },
       onChangeState,
+      onFilter,
     } = this;
 
     return (
@@ -27,8 +32,8 @@ class App extends Component {
         <h1>Phonebook</h1>
         <ContactForm contacts={contacts} onChangeState={onChangeState} />
         <h2>Contacts</h2>
-        <Filter />
-        <ContactList contacts={contacts} />
+        <Filter onFilter={onFilter} />
+        <ContactList contacts={contacts} filter={filter} />
       </>
     );
   }
