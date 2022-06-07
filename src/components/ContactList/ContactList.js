@@ -3,10 +3,10 @@ import React, { Component } from "react";
 class ContactList extends Component {
   render() {
     const { contacts, filter } = this.props;
-    const filterContacts = contacts;
+    let filterContacts = contacts;
     if (filter) {
       filterContacts = contacts.filter(({ name }) =>
-        name.toUpperCase().includes(filter)
+        name.toLowerCase().includes(filter)
       );
     }
     return (

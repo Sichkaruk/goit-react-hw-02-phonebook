@@ -7,7 +7,7 @@ import ContactList from "./components/ContactList/ContactList";
 class App extends Component {
   state = {
     contacts: [...INITIAL_STATE],
-    filter: "",
+    filter: [],
   };
 
   onFilter = (w) => {
