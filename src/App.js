@@ -20,11 +20,23 @@ class App extends Component {
     }));
   };
 
+  onDelete = (id) => {
+    const { contacts } = this.state;
+    for (let i = 0; i < contacts.length; i += 1) {
+      if (contacts[i].id === id) {
+        contacts.splice(i, 1);
+        break;
+      }
+    }
+    this.onChangeState(contacts);
+  };
+
   render() {
     const {
       state: { contacts, filter },
       onChangeState,
       onFilter,
+      onDelete,
     } = this;
 
     return (
@@ -33,7 +45,7 @@ class App extends Component {
         <ContactForm contacts={contacts} onChangeState={onChangeState} />
         <h2>Contacts</h2>
         <Filter onFilter={onFilter} />
-        <ContactList contacts={contacts} filter={filter} />
+        <ContactList contacts={contacts} filter={filter} onDelete={onDelete} />
       </>
     );
   }
