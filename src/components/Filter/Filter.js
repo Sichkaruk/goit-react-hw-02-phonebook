@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { BiFilterAlt } from "react-icons/bi";
+import { Container } from "./Filter.styled";
+import { Input, Label } from "./../ContactForm/ContactForm.styled";
 
 class Filter extends Component {
   handleInput = (e) => {
@@ -11,12 +13,18 @@ class Filter extends Component {
   render() {
     const { handleInput } = this;
     return (
-      <>
-        <label>
+      <Container>
+        <Label htmlFor="inputFilter">
           <BiFilterAlt />
-          <input type="text" name="filter" onChange={handleInput}></input>
-        </label>
-      </>
+          Find contacts by name
+        </Label>
+        <Input
+          id="inputFilter"
+          type="text"
+          name="filter"
+          onChange={handleInput}
+        ></Input>
+      </Container>
     );
   }
 }

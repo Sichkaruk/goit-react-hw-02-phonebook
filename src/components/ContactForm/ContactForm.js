@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { nanoid } from "nanoid";
+import { IconContext } from "react-icons";
 import { FaRegUserCircle } from "react-icons/fa";
-
 import { BsTelephone } from "react-icons/bs";
+import { BsPlusCircle } from "react-icons/bs";
+import { FormContacts, Label, Input, Button } from "./ContactForm.styled";
 
 const INITIAL_VALUE = {
   name: "",
@@ -52,41 +54,56 @@ class ContactForm extends Component {
 
     return (
       <>
-        <form onSubmit={handleSubmit}>
-          <label>
+        <FormContacts onSubmit={handleSubmit}>
+          <Label htmlFor="inputName">
             <FaRegUserCircle />
-            <input
-              type="text"
-              name="name"
-              value={name}
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              placeholder="Enter contact name"
-              required
-              onChange={handleInput}
-            />
-          </label>
-          <br />
-          <label>
+            Name
+          </Label>
+
+          <Input
+            id="inputName"
+            type="text"
+            name="name"
+            value={name}
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            placeholder="Enter contact name"
+            required
+            onChange={handleInput}
+          />
+
+          <Label htmlFor="inputNumber">
             <BsTelephone />
-            <input
-              type="tel"
-              name="number"
-              value={number}
-              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-              placeholder="Enter phone number"
-              required
-              onChange={handleInput}
-            />
-          </label>
-          <br />
-          <button type="submit" disabled={!name || !number}>
+            Number
+          </Label>
+
+          <Input
+            id="inputNumber"
+            type="tel"
+            name="number"
+            value={number}
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            placeholder="Enter phone number"
+            required
+            onChange={handleInput}
+          />
+
+          <Button type="submit" disabled={!name || !number}>
             Add contact
-          </button>
-        </form>
+            <IconContext.Provider
+              value={{
+                size: "1.3em",
+                style: { verticalAlign: "middle", marginLeft: "8px" },
+              }}
+            >
+              <BsPlusCircle />
+            </IconContext.Provider>
+          </Button>
+        </FormContacts>
       </>
     );
   }
 }
+
 export default ContactForm;

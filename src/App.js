@@ -3,6 +3,7 @@ import INITIAL_STATE from "./components/data/initial-state.json";
 import ContactForm from "./components/ContactForm/ContactForm";
 import Filter from "./components/Filter/Filter";
 import ContactList from "./components/ContactList/ContactList";
+import { Container, Title, ContactsTitle } from "./App.styled";
 
 class App extends Component {
   state = {
@@ -40,13 +41,13 @@ class App extends Component {
     } = this;
 
     return (
-      <>
-        <h1>Phonebook</h1>
+      <Container>
+        <Title>Phonebook</Title>
         <ContactForm contacts={contacts} onChangeState={onChangeState} />
-        <h2>Contacts</h2>
+        <ContactsTitle>Contacts</ContactsTitle>
         <Filter onFilter={onFilter} />
         <ContactList contacts={contacts} filter={filter} onDelete={onDelete} />
-      </>
+      </Container>
     );
   }
 }
