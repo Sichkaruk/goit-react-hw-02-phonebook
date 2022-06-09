@@ -82,7 +82,7 @@ class ContactForm extends Component {
             type="tel"
             name="number"
             value={number}
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            pattern="^((8|\+3)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             placeholder="Enter phone number"
             required
@@ -93,6 +93,7 @@ class ContactForm extends Component {
             Add contact
             <IconContext.Provider
               value={{
+                color: "#28e528",
                 size: "1.3em",
                 style: { verticalAlign: "middle", marginLeft: "8px" },
               }}

@@ -1,6 +1,14 @@
 import React, { Component } from "react";
-import { ContactsList, ContactItem } from "./../ContactList/ContactList.styled";
+import {
+  ContactsList,
+  ContactItem,
+  ContactNote,
+  Link,
+  ContactNoteItem,
+} from "./../ContactList/ContactList.styled";
 import { Button } from "./../ContactForm/ContactForm.styled";
+import { IconContext } from "react-icons";
+import { AiOutlineMinusCircle } from "react-icons/ai";
 
 class ContactList extends Component {
   render() {
@@ -15,9 +23,26 @@ class ContactList extends Component {
       <ContactsList>
         {filterContacts.map(({ id, name, number }) => (
           <ContactItem key={id}>
-            {name}: {number}
+            <ContactNote>
+              <ContactNoteItem>{name}:</ContactNoteItem>
+              <Link href={"tel:+" + parseInt(number.replace(/\D+/g, ""))}>
+                {number}
+              </Link>
+            </ContactNote>
             <Button type="button" onClick={() => onDelete(id)}>
               Delete
+              <IconContext.Provider
+                value={{
+                  size: "1.3em",
+                  style: {
+                    color: "#ff1c1c",
+                    verticalAlign: "middle",
+                    marginLeft: "4px",
+                  },
+                }}
+              >
+                <AiOutlineMinusCircle />
+              </IconContext.Provider>
             </Button>
           </ContactItem>
         ))}

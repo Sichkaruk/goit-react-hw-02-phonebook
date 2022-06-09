@@ -30,10 +30,14 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: ${({ theme }) => theme.spacing(2)};
   border: none;
   border-radius: ${({ theme }) => theme.spacing(2)};
   color: inherit;
+  white-space: nowrap;
   outline: 1px solid ${({ theme }) => theme.colors.primaryColor};
   transition: ${({ theme }) => `color ${theme.timing} ${theme.timingFunction}`},
     ${({ theme }) => `background-color ${theme.timing} ${theme.timingFunction}`};
