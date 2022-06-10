@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import {
   ContactsList,
   ContactItem,
@@ -6,6 +7,7 @@ import {
   Link,
   ContactNoteItem,
 } from "./../ContactList/ContactList.styled";
+
 import { Button } from "./../ContactForm/ContactForm.styled";
 import { IconContext } from "react-icons";
 import { AiOutlineMinusCircle } from "react-icons/ai";

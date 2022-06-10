@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { nanoid } from "nanoid";
+import { ToastContainer } from "react-toastify";
+import toastMsg from "../../utils/toast.js";
 import { IconContext } from "react-icons";
 import { FaRegUserCircle } from "react-icons/fa";
 import { BsTelephone } from "react-icons/bs";
@@ -23,11 +25,12 @@ class ContactForm extends Component {
     e.preventDefault();
     const { name, number } = this.state;
     const { contacts, onChangeState } = this.props;
-    if (this.matchCheck(name, contacts)) return this.alertMsg(name);
+    if (this.matchCheck(name, contacts)) return this.alert(name, "warn");
     contacts.push({ id: nanoid(), name: name, number: number });
     this.setState(() => ({ number: number }));
     onChangeState(contacts);
     this.reset();
+    this.alert(name, "success");
   };
 
   matchCheck = (name, contacts) => {
@@ -37,8 +40,8 @@ class ContactForm extends Component {
     return false;
   };
 
-  alertMsg = (name) => {
-    alert(`${name} is alredy in contacts`);
+  alert = (name, type) => {
+    toastMsg(name, type);
   };
 
   reset = () => {
@@ -101,6 +104,7 @@ class ContactForm extends Component {
               <BsPlusCircle />
             </IconContext.Provider>
           </Button>
+          <ToastContainer />
         </FormContacts>
       </>
     );
